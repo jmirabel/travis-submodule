@@ -1,0 +1,13 @@
+#!/bin/sh
+set -ev
+
+. `dirname $0`/common/functions.sh
+
+# Some functions
+install_libccd()
+{
+  brew install libccd
+}
+
+brew tap homebrew/science
+brew install cmake doxygen tinyxml pkg-config

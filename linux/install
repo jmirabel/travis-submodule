@@ -1,0 +1,12 @@
+#!/bin/bash
+set -ev
+
+. `dirname $0`/common/functions.sh
+
+# Some functions
+install_libccd()
+{
+  sudo add-apt-repository --yes ppa:libccd-debs/ppa
+  sudo apt-get -qq update
+  sudo apt-get -qq --yes --force-yes install libccd-dev
+}
