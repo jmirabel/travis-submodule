@@ -5,7 +5,6 @@ set -ev
 . ${TRAVIS_SUBMODULE}/common/dependencies.sh
 
 # Create layout.
-DEVEL_DIR="$ROOT_DIR/_travis"
 SOURCE_DIR="$DEVEL_DIR/src"
 INSTALL_DIR="$DEVEL_DIR/install"
 rm -rf "$SOURCE_DIR" "$INSTALL_DIR"

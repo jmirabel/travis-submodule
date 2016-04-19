@@ -1,0 +1,11 @@
+#!/bin/bash
+set -ev
+
+cd ${ROOT_DIR}
+[ ! -d "build" ] && mkdir -p "build"
+cd "build"
+cmake "$ROOT_DIR" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:STRING="$DEVEL_DIR/install"
+make
+make test
+make install
+make uninstall
