@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ev
 
-. `dirname $0`/common/functions.sh
+. ${TRAVIS_SUBMODULE}/common/functions.sh
 
 # Some functions
 install_libccd()

@@ -14,7 +14,7 @@ install_doxygen()
     _cd_src_directory
     echo "--> Installing Doxygen"
     wget --quiet -O - "ftp://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.11.linux.bin.tar.gz" | tar -xz;
-    cd "$build_dir/doxygen-1.8.11"
+    cd "doxygen-1.8.11"
     ./configure --prefix "$DEVEL_DIR/install"
     {
       make $MAKE_ARGS install > ${MAKE_OUTPUTFILE}
