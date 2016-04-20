@@ -5,6 +5,7 @@
 : ${CMAKE_BUILD_REL_DIRECTORY=build}
 : ${CMAKE_ARGS="-DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX='${DEVEL_DIR}/install' -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"}
 : ${MAKE_ARGS="-s -j4"}
+: ${MAKE_REDIRECT_STDERR=0}
 : ${MAKE_OUTPUTFILE="${ROOT_DIR}/make.log"}
 : ${GIT_QUIET="--quiet"}
 
@@ -21,7 +22,11 @@ _do_install()
   [ ! -d "${CMAKE_BUILD_REL_DIRECTORY}" ] && mkdir -p ${CMAKE_BUILD_REL_DIRECTORY}
   cd ${CMAKE_BUILD_REL_DIRECTORY}
   cmake ${CMAKE_ARGS} ..
-  make ${MAKE_ARGS} install >> ${MAKE_OUTPUTFILE}
+  if [ "${MAKE_REDIRECT_STDERR}" -eq "0" ]; then
+    make ${MAKE_ARGS} install >> ${MAKE_OUTPUTFILE}
+  else
+    make ${MAKE_ARGS} install >> ${MAKE_OUTPUTFILE} 2>&1
+  fi
 }
 _cd_src_directory()
 {
