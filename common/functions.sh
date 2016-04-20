@@ -18,14 +18,14 @@
 _do_install()
 {
   echo "--> Compiling $2"
-  [ ! -d "${CMAKE_BUILD_REL_DIRECTORY}" ] && mkdir --parents ${CMAKE_BUILD_REL_DIRECTORY}
+  [ ! -d "${CMAKE_BUILD_REL_DIRECTORY}" ] && mkdir -p ${CMAKE_BUILD_REL_DIRECTORY}
   cd ${CMAKE_BUILD_REL_DIRECTORY}
   cmake ${CMAKE_ARGS} ..
   make ${MAKE_ARGS} install >> ${MAKE_OUTPUTFILE}
 }
 _cd_src_directory()
 {
-  [ ! -d "${DEVEL_DIR}/src" ] && mkdir --parents "${DEVEL_DIR}/src"
+  [ ! -d "${DEVEL_DIR}/src" ] && mkdir -p "${DEVEL_DIR}/src"
   cd "${DEVEL_DIR}/src"
 }
 
