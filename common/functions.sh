@@ -60,7 +60,7 @@ install_git_dependency()
 
 install_github_dependency()
 {
-  url=git@github.com/$1
+  url=https://github.com/$1
   branch=$2
   install_git_dependency $url $1 $branch
 }
