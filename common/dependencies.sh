@@ -11,5 +11,8 @@ install_eigen3()
 
 install_octomap()
 {
+  cmake_args=${CMAKE_ARGS}
+  CMAKE_ARGS="${CMAKE_ARGS} -DBUILD_OCTOVIS_SUBPROJECT:BOOL=OFF"
   install_github_dependency OctoMap/octomap tags/v1.6.8
+  CMAKE_ARGS=${cmake_args}
 }

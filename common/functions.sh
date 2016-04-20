@@ -2,11 +2,14 @@
 
 # Variable that can be configured
 : ${CMAKE_BUILD_TYPE=Release}
+: ${CMAKE_CXX_FLAGS=""}
+: ${CMAKE_ARGS=""}
+
 : ${CMAKE_BUILD_REL_DIRECTORY=build}
-: ${CMAKE_ARGS="-DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX='${DEVEL_DIR}/install' -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"}
 : ${MAKE_ARGS="-s -j4"}
 : ${MAKE_REDIRECT_STDERR=0}
 : ${MAKE_OUTPUTFILE="${ROOT_DIR}/make.log"}
+
 : ${GIT_QUIET="--quiet"}
 
 # git commands
@@ -21,7 +24,11 @@ _do_install()
   echo "--> Compiling $1"
   [ ! -d "${CMAKE_BUILD_REL_DIRECTORY}" ] && mkdir -p ${CMAKE_BUILD_REL_DIRECTORY}
   cd ${CMAKE_BUILD_REL_DIRECTORY}
-  cmake ${CMAKE_ARGS} ..
+  cmake -DCMAKE_INSTALL_PREFIX="${DEVEL_DIR}/install" \
+        -DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}"      \
+        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS}"        \
+        -DCMAKE_INSTALL_LIBDIR=lib                    \
+        ${CMAKE_ARGS} ..
   if [ "${MAKE_REDIRECT_STDERR}" -eq "0" ]; then
     make ${MAKE_ARGS} install >> ${MAKE_OUTPUTFILE}
   else
