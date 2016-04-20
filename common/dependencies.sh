@@ -22,3 +22,8 @@ install_doxygen()
       :
     }
 }
+
+install_octomap()
+{
+  install_github_dependency OctoMap/octomap tags/v1.6.8
+}
