@@ -18,7 +18,7 @@
 # create build directory inside source folder and run cmake and make
 _do_install()
 {
-  echo "--> Compiling $2"
+  echo "--> Compiling $1"
   [ ! -d "${CMAKE_BUILD_REL_DIRECTORY}" ] && mkdir -p ${CMAKE_BUILD_REL_DIRECTORY}
   cd ${CMAKE_BUILD_REL_DIRECTORY}
   cmake ${CMAKE_ARGS} ..
