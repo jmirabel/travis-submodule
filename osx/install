@@ -9,5 +9,10 @@ install_libccd()
   brew install libccd
 }
 
+install_doxygen()
+{
+  brew install doxygen
+}
+
 brew tap homebrew/science
-brew install cmake doxygen tinyxml pkg-config
+brew install cmake tinyxml pkg-config
