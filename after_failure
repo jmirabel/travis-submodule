@@ -1,0 +1,17 @@
+#!/bin/bash
+. ${TRAVIS_SUBMODULE}/common/config.sh
+
+# Set debug mode
+set -x
+set -v
+
+# Display post-failure environment
+echo "Environment:"
+env
+
+# Dump as much log as we can
+find $DEVEL_DIR/src -name "*.log" | xargs cat
+
+# End debug mode
+set +v
+set +x
