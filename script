@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ev
 
-. ${TRAVIS_SUBMODULE}/common/config.sh
+. ${TRAVIS_SUBMODULE}/config.sh
 
 cd ${ROOT_DIR}
 [ ! -d "build" ] && mkdir -p "build"

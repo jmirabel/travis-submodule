@@ -11,4 +11,4 @@ rm -rf "$SOURCE_DIR" "$INSTALL_DIR"
 mkdir -p "$SOURCE_DIR"
 mkdir -p "$INSTALL_DIR"
 
-. ${TRAVIS_SUBMODULE}/common/config.sh
+. ${TRAVIS_SUBMODULE}/config.sh
