@@ -1,0 +1,31 @@
+language: cpp
+sudo: required
+os:
+  - linux
+  - osx
+dist: trusty
+addons:
+  apt:
+    packages:
+      - libboost-test-dev
+      - libboost-system-dev
+      - libboost-thread-dev
+      - libboost-filesystem-dev
+      - libboost-program-options-dev
+      - libtinyxml-dev
+branches:
+  only:
+  - master
+  - devel
+compiler:
+  - gcc
+before_install:
+  - export ROOT_DIR=`pwd`
+  - export DEVEL_DIR="$ROOT_DIR/_travis"
+  - export TRAVIS_SUBMODULE="$ROOT_DIR/.travis-submodule"        # Update this if you didn't use .travis-submodule
+  - export EXTERNAL_DEPENDENCIES="doxygen libccd eigen3 octomap" # Update this, installed in this order
+  - export HPP_DEPENDENCIES="hpp-util hpp-fcl"                   # Update this, installed in this order
+  - git submodule --quiet update --init
+install: ${TRAVIS_SUBMODULE}/install
+script: ${TRAVIS_SUBMODULE}/script
+after_failure: ${TRAVIS_SUBMODULE}/after_failure
