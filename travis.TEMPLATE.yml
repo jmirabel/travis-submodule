@@ -23,13 +23,13 @@ before_install:
   - git submodule --quiet update --init
   - export ROOT_DIR=`pwd`
   - export DEVEL_DIR="$ROOT_DIR/_travis"
-  - export TRAVIS_SUBMODULE="$ROOT_DIR/.travis-submodule"        # Update this if you didn't use .travis-submodule
+  - export TRAVIS_SUBMODULE="$ROOT_DIR/.travis-submodule"        # Path to the travis submodule
 
-  - export APT_PACKAGES=""                                       # Install packages on linux.
-  - export BREW_PACKAGES=""                                      # Install packages on OSX. (tinyxml, pkg-config and cmake are installed)
+  - export APT_PACKAGES=""                                       # Packages to install on linux.
+  - export BREW_PACKAGES=""                                      # Packages to install on OSX. tinyxml, pkg-config and cmake will be installed anyway.
 
-  - export EXTERNAL_DEPENDENCIES="doxygen libccd eigen3 octomap" # Update this, installed in this order
-  - export HPP_DEPENDENCIES="hpp-util hpp-fcl"                   # Update this, installed in this order
+  - export EXTERNAL_DEPENDENCIES="doxygen libccd eigen3 octomap" # List of external dependencies handled with specific care by the submodule. Function install_<package> will be called for each package.
+  - export HPP_DEPENDENCIES="hpp-util hpp-fcl"                   # List of repositories on github.com/humanoid-path-planner to be installed.
 install: ${TRAVIS_SUBMODULE}/install
 script: ${TRAVIS_SUBMODULE}/script
 after_failure: ${TRAVIS_SUBMODULE}/after_failure
