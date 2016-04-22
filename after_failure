@@ -9,8 +9,8 @@ set -v
 echo "Environment:"
 env
 
-# Dump as much log as we can
-find $DEVEL_DIR/src -name "*.log" | xargs cat
+# Dump logs of the current build
+find "$ROOT_DIR/build" -name "*.log" | xargs cat
 
 # End debug mode
 set +v
