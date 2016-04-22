@@ -24,3 +24,7 @@ install_doxygen()
       :
     }
 }
+
+if [ "x${APT_PACKAGES}" != "x" ]; then
+  sudo apt-get install ${APT_PACKAGES}
+fi
