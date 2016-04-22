@@ -1,5 +1,5 @@
 #!/bin/bash
-. ${TRAVIS_SUBMODULE}/common/config.sh
+. ${TRAVIS_SUBMODULE}/config.sh
 
 # Set debug mode
 set -x
