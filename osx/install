@@ -18,9 +18,16 @@ install_doxygen()
   brew install doxygen
 }
 
-brew tap homebrew/science
-brew install cmake tinyxml pkg-config
+silent_brew ()
+{
+  brew $@ > /dev/null
+}
+
+BREW=silent_brew
+
+${BREW} tap homebrew/science
+${BREW} install cmake tinyxml pkg-config
 
 if [ "x${BREW_PACKAGES}" != "x" ]; then
-  brew install ${BREW_PACKAGES}
+  ${BREW} install ${BREW_PACKAGES}
 fi
