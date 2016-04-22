@@ -12,3 +12,11 @@ mkdir -p "$SOURCE_DIR"
 mkdir -p "$INSTALL_DIR"
 
 . ${TRAVIS_SUBMODULE}/config.sh
+
+for package in ${EXTERNAL_DEPENDENCIES}; do
+  install_${package}
+done
+
+for package in ${HPP_DEPENDENCIES}; do
+  install_github_dependency humanoid-path-planner/${package} ${TRAVIS_BRANCH}
+done
